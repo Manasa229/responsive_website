@@ -1,0 +1,108 @@
+<html>
+<link rel="stylesheet" href="./wallpapers.css">
+
+<head></head>
+
+<body>
+    <input id="mealInput" type="text" placeholder="Enter a letter to get a meal starting from that letter">
+    <button onclick="getWallPapers()">Load images</button>
+    <div class="wallpapers" id="wallpapers">
+        <div class="modal" id="modal">
+            <span class="close" onclick="closeModal()">x</span>
+            <img class="modal-content" id="modalImage">
+            <span class="prev" onclick="prevImage();">
+                << /span>
+                    <span class="next" onclick="nextImage();">></span>
+        </div>
+
+    </div>
+</body>
+<script>
+    var curMealId;
+    var meals = [];
+
+    getWallPapers();
+    function getWallPapers() {
+
+        var cityInput=document.getElementById('mealInput');
+        if(cityInput && cityInput!=""){
+            cityInput=cityInput.value;
+            
+        } if (cityInput==""){
+            cityInput="b"
+        }
+
+        fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${cityInput}`)
+            .then(response => response.json())
+            .then(data => {
+
+                if (data && data.meals) {
+
+
+                    const mealDiv = document.getElementById('wallpapers');
+                    mealDiv.innerHTML="";
+
+
+                    data.meals.forEach((photo, index) => {
+                        const imgElement = document.createElement('img');
+                        imgElement.src = photo.strMealThumb; 
+
+                        const imgName = document.createElement("p")
+                        imgName.innerHTML=photo.strMeal;
+
+
+                        const div = document.createElement('div');
+                        div.classList.add('grid-item');
+                        div.appendChild(imgElement);
+                        div.appendChild(imgName)
+                        imgElement.onclick = function (event) {
+                            if (document.getElementById("modal").style.display != "none") {
+                                closeModal()
+                            } else {
+                                curMealId = index;
+                                openModal(photo.strMealThumb);
+                            }
+
+                        }
+
+                        mealDiv.appendChild(div);
+                    });
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching the meal:', error);
+            });
+    }
+
+    function openModal(img) {
+        var modal = document.getElementById("modal");
+        var imageSrc = document.getElementById("modalImage");
+        modal.style.display = "block";
+        imageSrc.src = img;
+
+
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("modal");
+        modal.style.display = "none";
+    }
+
+    function nextImage() {
+        curMealId++;
+        var imageSrc = document.getElementById("modalImage");
+        imageSrc.src = meals[curMealId]["strMealThumb"]
+    }
+
+    function prevImage() {
+        curMealId--;
+        var imageSrc = document.getElementById("modalImage");
+        imageSrc.src = meals[curMealId]["strMealThumb"]
+    }
+
+    function handleImageClick(event) {
+        event.stopPropagation();
+    }
+</script>
+
+</html>

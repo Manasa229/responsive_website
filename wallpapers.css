@@ -1,0 +1,97 @@
+html{
+    background-color: rgb(86, 86, 134) ;
+}
+
+.wallpapers{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(28%,6fr));
+    gap:2rem;
+padding: 2rem;
+
+}
+
+.grid-item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 2px;
+}
+
+
+.grid-item {
+    width: 100%;
+    position: relative; 
+    aspect-ratio: 1/1;
+    border-radius: 8px; 
+}
+
+.grid-item img {
+    position: absolute; 
+    width: 100%; 
+    height: 100%; 
+    object-fit:cover; 
+    display: block; 
+}
+
+.modal {
+    display: none;
+    z-index: 1000;
+    position: fixed;
+    height: 50%;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: rgba(0, 0, 0, 0.8); 
+    justify-content: center;
+    align-items: center;
+}
+
+.modal img{
+    display: flex;
+    justify-self: center;
+    align-self: center;
+    position: relative; 
+    width: 100%; 
+    height:100%; 
+    object-fit:cover; 
+    border: 2px solid black;
+  
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: black;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001
+}
+
+.prev{
+    position: absolute;
+    top: 40%;
+    left: 30px;
+    z-index: 1001;
+    color: black;
+    font-size: 40px;
+  
+}
+
+.next{
+    position: absolute;
+    z-index: 1001;
+    color: black;
+    top:40%;
+    right:30px;
+    font-size: 40px;
+}
+
+.grid-item p {
+    margin: 5px 0; /* Add some space above and below the text */
+    font-weight: bold; /* Optional: Bold the meal name */
+}
