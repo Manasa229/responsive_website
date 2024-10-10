@@ -1,0 +1,41 @@
+<html>
+<link rel="stylesheet" href="tasks.css">
+
+<head></head>
+
+<body>
+
+
+    <div class="dashboard">
+        <div class="">
+            <input class="input-text" type="text" placeholder="Enter task name">
+            <button onclick="addTask()">Add Task</button>
+
+            <button onClick="moveToLeft()">Move to Left</button>
+            <button onClick="moveToRight()">Move to Right</button>
+        </div>
+        <div class="tasks">
+            <div class="column">
+                <div class="header">To Do</div>
+                <div class="todo-list">
+
+                </div>
+
+            </div>
+            <div class="column">
+                <div class="header">In progress</div>
+                <div class="inprogress-list"></div>
+
+            </div>
+            <div class="column">
+                <div class="header">Completed</div>
+                <div class="completed-list"></div>
+            </div>
+        </div>
+
+        <div class="toast">Hi</div>
+    </div>
+    <script src="tasks.js"></script>
+</body>
+
+</html>

@@ -91,7 +91,3 @@ padding: 2rem;
     font-size: 40px;
 }
 
-.grid-item p {
-    margin: 5px 0; /* Add some space above and below the text */
-    font-weight: bold; /* Optional: Bold the meal name */
-}

@@ -1,0 +1,28 @@
+{
+    "tasks": [
+        {
+            "name": "Task 1",
+            "status": "pending"
+        },
+        {
+            "name": "Task 2",
+            "status": "pending"
+        },
+        {
+            "name": "Task 3",
+            "status": "updated"
+        },
+        {
+            "name": "Task 4",
+            "status": "completed"
+        },
+        {
+            "name": "Task 5",
+            "status": "completed"
+        },
+        {
+            "name": "Task 6",
+            "status": "completed"
+        }
+    ]
+}
